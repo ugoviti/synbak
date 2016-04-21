@@ -1,0 +1,48 @@
+TODO List planned from release > 1.0.0 of synbak
+
+legend:
+- planned
+* work in progress
++ done
+==================
+
+
+:: Architecture
+    - Enable remote-to-remote backup for methods like rsync, tar etc...
+      Actually synbak can act as backup server collecting data 'from remote' host shares 'to local' synbak machine,
+      but not 'from remote' host share 'to remote' host share, because actually you can specify only 'remote source' and 
+      not 'remote destination', destination is always local (ex. file system directory, tape device, laserdisc media, tar archive, etc...)
+      NOTE: you can accomplish this using autofs service, please read the FAQ file
+    - Write a GTK/QT/MFC/.Net/Java GUI frontend for managing the synbak config file
+    - Write a GTK/QT/MFC/.Net/Java GUI frontend for browsing, searching and recovering backuped files
+    - Add to synbak a feature to auto remove old backups (even if you want keep many other days) when the destination disk reach near 95% of capacity.
+      This can make synbak a very automated tool
+    - Enhance the synbak reporting facility, allowing verbose output of backup commands and reporting that to the various reports (like adding
+      "backup_method_opts = -vvv" to the rsync method)
+
+
+:: Backup Methods
+    + Oracle databases
+    + Remote HTTP/FTP mirrors or single file download via wget
+    - rdiff-backup system
+    * DAR backup system
+    + PostgreSQL databases
+    - Microbackup snapshot policy
+    - Informix databases
+    - MS-SQL databases
+    - IBM DB2 databases
+    - rsync to non ext3 filesystems return errors (must exclude the following strings):
+	rsync: chown
+	rsync: mkstemp
+	rsync: recv_generator: mkdir
+	rsync: symlink
+	rsync error: some files/attrs were not transferred
+	*** Skipping any contents from this failed directory ***
+    - add the ssh tunnel option to bypass firewalled target servers (named like: backup_remote_ssh_tunnel)
+
+
+:: Reports
+    - Write a report method to storing backups information into a SQL database (ex. MySQL, PostgreSQL, Oracle, etc...)
+    - Write a PHP frontend using a SQL backend with backups information stored on it
+    - Save the html backup information files in the xml format instead using plain ASCII files
+    + Use TableKit for html table rendering, sorting and column reordering

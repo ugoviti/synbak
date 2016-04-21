@@ -1,0 +1,8 @@
+Attention Oracle(tm) Users:
+synbak's Oracle database backup method is enabled in this package, but,
+because Fedora Project can't provide any proprietary command or library to make synbak connect to
+an Oracle database, that tools must be installed purchasing a legal licence and
+using Oracle's custom installation method.
+
+Thank You,
+Fedora synbak maintainers

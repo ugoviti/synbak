@@ -1,0 +1,5 @@
+release
+*.tar.gz
+make-release.sh
+TESTS
+.svn

@@ -1,0 +1,60 @@
+System requirements and dependencies:
+-------------------------------------
+
+What you need to run synbak:
+  * a fully UTF-8 charset GNU/Linux Operating System
+  * GNU bash shell v2.0 or v3.0
+  * GNU autotools
+  * GNU coreutils 5.x or above
+  - mandatory commands:
+    * GNU gettext 0.14 or highter
+    * GNU awk
+    * GNU sed
+    * GNU grep
+    * GNU date
+    * GNU find
+    * tee
+    * bc
+    * nc (netcat)
+    * mktemp 1.5 or highter
+  - mandatory backup utilities:
+    * GNU tar
+    * mtx
+    * mt-tools
+    * rsync
+    * samba
+    * mysqldump
+    * exp (oracle's export command)
+    * ldapsearch
+    * mount.cifs or smbmount
+
+
+Installing synbak:
+------------------
+   * you can install synbak from sources with:
+
+     $ ./configure (--prefix=/your/path to relocate the destination base dir)
+     $ make
+     $ make install
+
+   * if you have a RPM based Linux distro you can use the available synbak package, and install it with: rpm -Uhv synbak-x.x.x-x.noarch.rpm
+   * if you want build binary rpm package from src.rpm package use: rpmbuild --rebuild synbak-x.x.x-x.src.rpm
+   * if you want build binary rpm package from tar.gz archive use: rpmbuild -ta synbak-x.x.x.tar.gz
+
+
+Configuring synbak:
+-------------------
+   * read the FAQ file located into synbak doc directory (usually /usr/share/doc/synbak-x.x.x/)
+   * launch synbak and read the output :-)
+   * launch synbak with a command like this: synbak -s localhost -m rsync
+     it will create a '.synbak' directory in your user home directory
+     then follow the onscreen informations
+   * edit the $HOME/.synbak/$method/$system.conf config file
+   * re run the 'synbak -s localhost -m rsync' to make the real backup
+   * that's all
+
+
+Method specific configuration options:
+--------------------------------------
+   * Read the FAQ file included with synbak documentation
+

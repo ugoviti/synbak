@@ -1,0 +1,11 @@
+^(SYNBAK-EMPTY-NONERRORS-STRINGS-PLACEHOLDER-DONT-REMOVE)$
+Warning: Permanently added
+file has vanished: 
+rsync warning: some files vanished before they could be transferred
+rsync error: some files could not be transferred (code 23) at main.c
+dup_acl: sys_acl_get_file(, SMB_ACL_TYPE_
+send_acl: sys_acl_get_file(
+push_keep_backup_acl: sys_acl_get_file(
+rsync_xal_set: lsetxattr security.selinux failed:
+: rsync_xal_get: llistxattr
+rsync error: the --max-delete limit stopped deletions (code 25) at main.c

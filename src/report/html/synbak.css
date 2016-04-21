@@ -1,0 +1,393 @@
+/* Copyright (c) 2007, InitZero S.r.l. All Rights Reserved. */
+
+/* main styles */
+body, table, tr, td {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+
+body {
+	background-color: #FFFFFF;
+	background-repeat: repeat-y;
+}
+
+img {
+	/*
+	position: relative;
+	top: -2;
+	*/
+	border-width: 0px;
+	vertical-align: middle;
+}
+
+/* links */
+a, a:active {
+	text-decoration: none;
+	color: blue;
+}
+
+a, a:visited {
+	text-decoration: none;
+	color: #3163CE;
+}
+
+a:hover {
+	text-decoration: underline;
+	color: #3A0B88;
+}
+
+/* misc */
+.content {
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.description {
+	font-size: 1.3em;
+	font-weight: bold;
+}
+
+.copyright {
+	font-size: 0.8em;
+}
+
+.footer {
+	font-size: 0.8em;
+}
+
+.center {
+    text-align: center;
+}
+
+.center table {
+    margin: 0 auto;
+}
+
+.right {
+	text-align: right;
+}
+
+.left {
+	text-align: left;
+}
+
+/* TextBoxes */
+.TextBox {
+    border: 1px solid rgb(180, 180, 180);
+}
+
+.TextBoxCounter {
+    font-size: 10px;
+    border: 1px solid rgb(180, 180, 180);
+}
+
+.TextBoxError {
+    border: 2px solid rgb(255, 0, 0);
+}
+
+/* Text Messages */
+.TextOks {
+    font-weight: bold;
+    color: rgb(0, 150, 50);
+}
+
+.TextErrors {
+    font-weight: bold;
+    color: rgb(200, 50, 50);
+}
+
+.TextTotals {
+    font-style: italic;
+}
+
+.TextRow {
+    font-style: italic;
+    color: rgb(0, 0, 140);
+}
+
+/* custom to synbak */
+table.iztable {
+	width: 30em;
+}
+
+
+
+
+/* default iztable setup */
+table.iztable {
+    text-align: left;
+    border-collapse: separate;
+    border-spacing: 0px;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    color: #333333;
+    /* background-color: #E7E7E7; */
+}
+
+table.iztable caption {
+    font-size: 12px;
+    color: #FFFFFF;
+    text-align: left;
+    white-space: nowrap;    
+    background-color: #50ADEA;
+    border-bottom: 2px solid #1975D7;
+    /*
+    background: #50ADEA url( ../images/table/corner.gif ) no-repeat right top;
+    text-transform: uppercase;
+    */
+    padding: 5px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+table.iztable caption img {
+    /*
+    position: relative;
+    top: -2;
+    */
+    border-width: 0px;
+    vertical-align: middle;
+}
+
+table.iztable caption span {
+    position: relative;
+}
+
+table.iztable th,
+table.iztable td {
+    padding: 3px;
+}
+
+table.iztable thead th {
+    text-align: center;
+    white-space: nowrap;
+    color: #00008C;
+    background-color: #FFCC00;
+    border-top: 1px solid #FFE600;
+    border-left: 1px solid #FFE600;
+    border-right: 1px solid #FFB400;
+    border-bottom: 1px solid #FFB400;
+}
+
+table.iztable thead th:hover {
+    background-color: #FFB400;
+    border-top: 1px solid #FF9900;
+    border-left: 1px solid #FF9900;
+    border-right: 1px solid #FFE600;
+    border-bottom: 1px solid #FFE600;
+}
+
+table.iztable thead th a {
+    text-decoration: none;
+}
+
+table.iztable thead th a:link, 
+table.iztable thead th a:visited {
+    color: #3A0B88;
+}
+
+table.iztable thead th a:hover {
+    color: #00008C;
+}
+
+table.iztable tbody th {
+    font-weight: bold;
+}
+
+table.iztable tbody tr {
+    /* 
+    background-color: #FFFFFF;
+    text-align: left;
+    */
+}
+
+/* rows and cols styles with zebra and hover effect */
+table.iztable tbody tr.roweven td,
+table.iztable tbody tr td {
+    white-space: nowrap;
+    background-color: #F8F8F8;
+    border-top: 1px solid #FFFFFF;
+    border-left: 1px solid #FFFFFF;
+
+    border-right: 1px solid #E7E7E7;
+    border-bottom: 1px solid #E7E7E7;
+    /*
+*/
+    padding-left: 2px;
+    padding-right: 2px;
+    /* text-align: left; */
+    /* text-align: right; */
+}
+
+table.iztable tbody tr.roweven:hover td,
+table.iztable tbody tr:hover td {
+    background-color: #ECECEC;
+}
+
+table.iztable tbody tr.rowodd td {
+    background-color: #F4F4F4;
+    border-top: 1px solid #FFFFFF;
+}
+
+table.iztable tbody tr.rowodd:hover td {
+    background-color: #EAEAEA;
+}
+
+/* active column */
+table.iztable tbody td.colodd {
+    /* font-weight: bold; */
+    font-style: italic;
+    background-color: #F0F0F0;
+}
+
+table.iztable tbody tr:hover td.colodd {
+    background-color: #E6E6E6;
+}
+
+table.iztable tbody tr.rowodd td.colodd {
+    background-color: #EAEAEA;
+}
+
+table.iztable tbody tr.rowodd:hover td.colodd {
+    background-color: #E1E1E1;
+}
+/* */
+
+table.iztable tbody td a:link, 
+table.iztable tbody td a:visited {
+    color: #1975D7;
+    text-decoration: none;
+}
+
+table.iztable tbody td a:hover {
+    color: #50ADEA;
+    border-bottom: 2px solid #8FD5FF;
+    text-decoration: none;
+}
+
+table.iztable tfoot th, 
+table.iztable tfoot td {
+    white-space: nowrap;
+    background-color: #E7E7E7;
+    padding: 10px;
+    text-align: right;
+    font-size: 10px;
+    font-style: italic;
+    border-bottom: 3px solid #CCCCCC;
+    border-top: 1px solid #DFDFDF;
+}
+
+/* tablesort javascript prototype styles */
+table.iztable thead th.sortable,
+table.iztable thead th.sortable-text,
+table.iztable thead th.sortable-date,
+table.iztable thead th.sortable-keep,
+table.iztable thead th.sortable-date-dmy,
+table.iztable thead th.sortable-numeric,
+table.iztable thead th.sortable-currency,
+table.iztable thead th.sortable-sortByTwelveHourTimestamp,
+table.iztable thead th.sortable-sortIPAddress,
+table.iztable thead th.sortable-sortEnglishLonghandDateFormat,
+table.iztable thead th.sortable-sortScientificNotation,
+table.iztable thead th.sortable-sortImage,
+table.iztable thead th.sortable-sortFileSize {
+    cursor: pointer;
+    padding-right: 12px;
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-image: url( images/sortable.png );
+}
+
+table.iztable thead th.forwardSort {
+    background-color: #FFB400;
+    border-top: 1px solid #FFE600;
+    border-left: 1px solid #FFE600;
+    border-right: 1px solid #FF9900;
+    border-bottom: 1px solid #FF9900;
+    background-image: url( images/sort-down.png );
+}
+
+table.iztable thead th.forwardSort:hover {
+    background-color: #FF9900;
+    border-top: 1px solid #FFB400;
+    border-left: 1px solid #FFB400;
+    border-right: 1px solid #FFE600;
+    border-bottom: 1px solid #FFE600;    
+}
+
+table.iztable thead th.reverseSort {
+    background-color: #FFB400;
+    border-top: 1px solid #FFE600;
+    border-left: 1px solid #FFE600;
+    border-right: 1px solid #FF9900;
+    border-bottom: 1px solid #FF9900;
+    background-image: url( images/sort-up.png );
+}
+
+table.iztable thead th.reverseSort:hover {
+    background-color: #FF9900;
+    border-top: 1px solid #FFB400;
+    border-left: 1px solid #FFB400;
+    border-right: 1px solid #FFE600;
+    border-bottom: 1px solid #FFE600;
+}
+
+table.iztable thead th.forwardSort a,
+table.iztable thead th.reverseSort a {
+    color: #00008C;
+    outline:0 none;
+}
+
+
+
+
+
+/* synbak table rows and cols customizations */
+table.iztable tbody tr.roweven td.col_status_ok,
+table.iztable tbody tr td.col_status_ok {
+    /*text-align: right;*/
+    white-space: nowrap;
+    background-color: #8AE68A;
+}
+
+table.iztable tbody tr.roweven:hover td.col_status_ok,
+table.iztable tbody tr:hover td.col_status_ok {
+	background-color: #84DC84;
+}
+
+table.iztable tbody tr.rowodd td.col_status_ok {
+	background-color: #87E187;
+}
+
+table.iztable tbody tr.rowodd:hover td.col_status_ok {
+	background-color: #81D781;
+}
+
+
+table.iztable tbody tr.roweven td.col_status_error,
+table.iztable tbody tr td.col_status_error {
+    /*text-align: right;*/
+    white-space: nowrap;
+    background-color: #E61717;
+}
+
+table.iztable tbody tr.roweven:hover td.col_status_error,
+table.iztable tbody tr:hover td.col_status_error {
+	background-color: #DC1616;
+}
+
+table.iztable tbody tr.rowodd td.col_status_error {
+	background-color: #E11616;
+}
+
+table.iztable tbody tr.colodd:hover td.col_status_error {
+	background-color: #D71515
+}
+
+table.iztable tbody tr td.col_status_ok a,
+table.iztable tbody tr td.col_status_error a {
+	color: #0F4B8C;
+	font-weight: bold;
+}
+

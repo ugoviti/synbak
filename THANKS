@@ -1,0 +1,16 @@
+- James Van't Slot <james@simple-reliable.com> - for the php calendar extension
+
+- Giorgos Tsiledakis - for the php activecalendar
+
+- frequency-decoder.com - for the tablesort.js javascript library
+  NB. this library is released under a creative commons Attribution-ShareAlike 2.5 license
+  (http://creativecommons.org/licenses/by-sa/2.5/)
+  please read the documentation inside the library file
+
+- Phillip Smith - for many pgsql patches
+
+- Ken Yap <ken_yap@y7mail.com> - for lzo and xz compression into tar method
+
+- Tim Schaller <tim@torzo.com> - for the suggestion to add method_rsync_sudo
+
+- Piotr Smalira <p.smalira@g16-lublin.eu> - for the Polish translation

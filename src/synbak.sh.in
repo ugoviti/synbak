@@ -1,0 +1,512 @@
+#!/bin/bash
+#
+#   synbak - Universal Backup System
+#
+#   Copyright (C) 2003-2008 InitZero S.r.l.
+#   Home Page: http://www.initzero.it/products/opensource/synbak
+#   Written by: Ugo Viti <ugo.viti@initzero.it>
+#
+#   This program is free software; you can redistribute it and/or modify
+#   it under the terms of the GNU General Public License as published by
+#   the Free Software Foundation; either version 3 of the License, or
+#   (at your option) any later version.
+#
+#   This program is distributed in the hope that it will be useful,
+#   but WITHOUT ANY WARRANTY; without even the implied warranty of
+#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#   GNU General Public License for more details.
+#
+#   You should have received a copy of the GNU General Public License
+#   along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+
+
+# System Informations
+synbak_package="@PACKAGE@"						# synbak package name
+synbak_version="@VERSION@"						# synbak release version
+synbak_version_date="@VERSION_DATE@"					# synbak release date
+synbak_description="${synbak_package} - Universal Backup System"	# synbak description
+synbak_copyright="copyright ©2003-2016 InitZero S.r.l."			# synbak copyright
+synbak_homepage="http://www.initzero.it/products/opensource/synbak"	# synbak home page
+synbak_author_homepage="http://www.initzero.it"				# synbak author home page
+synbak_author="Ugo Viti - ugo.viti@initzero.it"				# synbak author
+
+# System Directories
+sys_dir="@pkgdatadir@"							# synbak system wide base dir
+sys_dir_locale="@localedir@"						# locale translations dir
+sys_dir_doc="@docdir@"							# documents dir
+
+sys_dir_lib="${sys_dir}"						# library dir
+sys_dir_method="${sys_dir}/method"					# backup methods dir
+sys_dir_report="${sys_dir}/report"					# reports procedure dir
+
+# System Files
+sys_file_functions="${sys_dir_lib}/functions.sh"			# synbak functions
+sys_file_conf_template="${sys_dir_lib}/template.conf"			# synbak template config file
+
+# User Directories
+usr_dir="${HOME}/.${synbak_package}"					# synbak user config dir
+
+# User Files (deprecated)
+usr_file_backup_failed_log="${synbak_package}-failed.log"		# synbak failed backup list
+#usr_file_backup_success_log="synbak-success.log"			# synbak success backup list
+#usr_file_conf_template="${usr_dir}/$(basename ${sys_file_conf_template})"	# synbak template config file
+
+
+########################################################################
+## don't edit anything bellow
+
+# load locale language interpreter and use it if gettext.sh exist
+# else revert to english only mode
+gettext_bash="/usr/bin/gettext.sh"
+if [ -f "${gettext_bash}" ]
+  then
+    source ${gettext_bash}
+    export TEXTDOMAIN="${synbak_package}"
+    export TEXTDOMAINDIR="${sys_dir_locale}"
+    msg(){
+      eval_gettext "$@"
+    }
+  else
+    # if the system doesn't support bash gettext wrapper, revert to english only output messages
+    msg(){
+      eval "echo -n \"$@\" | sed -e 's/\\\$/\$/g'"
+    }
+fi
+
+# init of some useful system wide variables
+usr_init_variables() {
+ # Add other paths
+ PATH=$PATH:/sbin:/usr/sbin:/usr/local/sbin
+
+ synbak_server="$(hostname)"
+ synbak_server_kernel="$(uname -s -r)"
+ today="$(date +"%Y%m%d")"
+ zerodayago="$(date --date="0 day ago" +"%Y%m%d")"
+ onedayago="$(date --date="1 day ago" +"%Y%m%d")"
+ twodayago="$(date --date="2 day ago" +"%Y%m%d")"
+ threedayago="$(date --date="3 day ago" +"%Y%m%d")"
+ fourdayago="$(date --date="4 day ago" +"%Y%m%d")"
+ fivedayago="$(date --date="5 day ago" +"%Y%m%d")"
+ sixdayago="$(date --date="6 day ago" +"%Y%m%d")"
+ sevendayago="$(date --date="7 day ago" +"%Y%m%d")"
+ eightdayago="$(date --date="8 day ago" +"%Y%m%d")"
+ ninedayago="$(date --date="9 day ago" +"%Y%m%d")"
+ tendayago="$(date --date="10 day ago" +"%Y%m%d")"
+}
+
+# temp file management
+usr_make_tmp_files() {
+
+  # the main synbak temp directory
+  #tmp_name="synbak-$system-$method-$(date +%s)-$RANDOM"
+  tmp_name="${synbak_package}-${system}-${method}-$(date +"%Y%m%d-%H%M%S.%N")"
+
+  # a better way to manage temp directories
+  dir_tmp="$(mktemp -d -t "${tmp_name}" 2>/dev/null)"
+
+  # for old systems that doesn't understand 'mktemp -t' option
+  if [ $? -eq 1 ]
+    then
+      dir_tmp="/tmp/${tmp_name}"
+      mkdir -p "${dir_tmp}"
+  fi
+
+  # change current directory to the temporary directory and make the backup from there
+  if [ -d "${dir_tmp}" ] && [ -w "${dir_tmp}" ]
+    then
+      cd "${dir_tmp}"
+    else
+      msg "ERROR: the directory '\${dir_tmp}' doesn't exist" >&2
+      echo >&2
+      exit 1
+  fi
+
+  file_synbak_server="${dir_tmp}/synbak_server"
+  file_synbak_server_kernel="${dir_tmp}/synbak_server_kernel"
+  file_system="${dir_tmp}/system"
+  file_method="${dir_tmp}/method"
+  file_method_option="${dir_tmp}/option"
+  file_method_type="${dir_tmp}/type"
+  file_log_output="${dir_tmp}/output"
+  file_log_errors="${dir_tmp}/errors"
+  file_log_stats="${dir_tmp}/stats"
+  file_stats_files_backup="${dir_tmp}/stats_files_backup"
+  file_stats_files_total="${dir_tmp}/stats_files_total"
+  file_size_source="${dir_tmp}/size_source"
+  file_size_destination="${dir_tmp}/size_destination"
+  file_size_backup="${dir_tmp}/size"
+  file_status_backup="${dir_tmp}/status"
+  file_status_host="${dir_tmp}/status_host"
+  file_status_config_field_import="${dir_tmp}/status_config_field_import"
+  file_list_source="${dir_tmp}/list_source"
+  file_list_destination="${dir_tmp}/list_destination"
+  file_list_exclude="${dir_tmp}/list_exclude"
+  file_list_unbackable="${dir_tmp}/list_unbackable"
+  file_list_backup="${dir_tmp}/list_backup"
+  file_list_backup_keep="${dir_tmp}/list_backup_keep"
+  file_list_backup_good="${dir_tmp}/list_backup_good"
+  file_list_backup_failed="${dir_tmp}/list_backup_failed"
+  file_list_backup_erase="${dir_tmp}/list_backup_erase"
+  file_time_begin="${dir_tmp}/begin"
+  file_time_end="${dir_tmp}/end"
+  file_synbak_vars="${dir_tmp}/synbak_vars"
+
+  dir_mnt="${dir_tmp}/mnt"
+
+  touch "${file_synbak_server}"		\
+	"${file_system}"		\
+	"${file_method}"		\
+	"${file_method_option}"		\
+	"${file_method_type}"		\
+	"${file_synbak_vars}"	 	\
+	"${file_log_output}"		\
+	"${file_log_errors}"		\
+	"${file_log_stats}"		\
+	"${file_stats_files_backup}"	\
+	"${file_stats_files_total}"	\
+	"${file_status_backup}"		\
+	"${file_status_host}"		\
+	"${file_status_config_field_import}" \
+	"${file_size_source}"		\
+	"${file_size_destination}"	\
+	"${file_size_backup}"		\
+	"${file_list_source}"		\
+	"${file_list_destination}"	\
+	"${file_list_exclude}"		\
+	"${file_list_unbackable}"	\
+	"${file_list_backup}"		\
+	"${file_list_backup_keep}"	\
+	"${file_list_backup_good}"	\
+	"${file_list_backup_failed}"	\
+	"${file_list_backup_erase}"	\
+	"${file_time_begin}"		\
+	"${file_time_end}"
+
+  # save the method and the system name into temp files
+  echo "${synbak_server}" > "${file_synbak_server}"
+  echo "${system}" > "${file_system}"
+  echo "${method}" > "${file_method}"
+
+  # save other mandatory variables
+  status_host=0
+  echo "${status_host}" > "${file_status_host}"
+}
+
+# environment sanity checks
+sys_check_env() {
+# First check if the synbak's main function file exist and execute it
+if [ -f "${sys_file_functions}" ]
+  then
+    # Load the main synbak environment libraries file
+    . "${sys_file_functions}";
+  else
+    msg "ERROR: can't find the '\${sys_file_functions}' file" >&2
+    echo >&2
+    exit 1;
+fi
+
+# check if system directories exist
+for dir in      ${sys_dir}                \
+                ${sys_dir_lib}            \
+                ${sys_dir_locale}         \
+                ${sys_dir_method}         \
+                ${sys_dir_report}
+  do
+    check_dir ${dir}
+    [ $? -ne 0 ] && exit 1;
+    unset dir
+  done
+
+# check if system files exist
+for file in     ${sys_file_functions}     \
+                ${sys_file_locale}        \
+                ${sys_file_conf_template}
+  do
+    check_file ${file}
+    [ $? -ne 0 ] && exit 1;
+    unset file
+  done
+
+# check if no args are given
+if [ "${system}" = "" ]; then
+  msg "ERROR: no 'system name' specified - abort" >&2
+  echo
+  exit 1
+fi
+
+
+if [ "${method}" = "" ]; then
+  msg "ERROR: no 'backup method' specified - abort" >&2
+  echo
+  exit 1
+fi
+
+
+# check if the typed method exist, if not, show installed methods available
+if [ ! -d ${sys_dir_method}/${method} ]
+  then
+    msg "ERROR: '\${method}' backup method doesn't exist!" >&2
+    echo >&2
+    echo >&2
+    msg "valid methods:" >&2
+    echo >&2
+    echo "-----------------------------------------------" >&2
+    show_available_methods
+    exit 1
+fi
+
+# check if the typed report exist, if not, show installed report available
+if [[ "${report}" != "" && ! -d ${sys_dir_report}/${report} ]]
+  then
+    msg "ERROR: '\${report}' backup report doesn't exist!" >&2
+    echo >&2
+    echo >&2
+    msg "valid reports:" >&2
+    echo >&2
+    echo "-----------------------------------------------" >&2
+    show_available_reports
+    exit 1
+fi
+
+
+## misc runtime variables
+
+# define the current method directories and files
+sys_dir_method="${sys_dir_method}/${method}"				# method directory
+sys_file_method="${sys_dir_method}/${method}.sh"			# method procedure
+sys_file_method_nonerrors_strings="${sys_dir_method}/nonerrors.strings"	# method output nonerrors strings
+
+# check if method files exist
+for file in	${sys_file_method}		\
+		${sys_file_method_nonerrors_strings}
+  do
+    check_file ${file}
+    [ $? -ne 0 ] && exit 1;
+    unset file
+  done
+}
+
+
+usr_check_env() {
+  # define user config file full path
+  usr_file_conf="${usr_dir}/${method}/${system}.conf"
+
+  show_new_backup_reminder() {
+    msg "INFO: if you are running this backup for the first time, run the following command and retry:
+      cp \${sys_file_conf_template} \${usr_dir}/\${method}/\${system}.conf
+" >&2
+  }
+
+  # verify if exist the synbak user config dir, if not, create it
+  check_dir ${usr_dir}/${method}
+
+  # if the user config dir doesn't exist create it with the default structure
+  if [ $? -ne 0 ]
+    then
+      mkdir -p ${usr_dir}/${method}
+      echo >&2
+      msg "INFO: i automatically created '${usr_dir}/${method}' directory for you" >&2
+      echo >&2
+      echo >&2
+      show_new_backup_reminder
+      exit 1;
+  fi
+
+  # always copy the template config file to user synbak dir (deprecated)
+  #cp -f ${sys_file_conf_template} ${usr_dir}/
+  [ -e "${usr_dir}/example.conf" ] && rm -f "${usr_dir}/example.conf"
+
+  # check if the typed system config file exist
+  if [ ! -f ${usr_file_conf} ]
+    then
+      msg "ERROR: '\${usr_file_conf}' system config file doesn't exist!" >&2
+      echo >&2
+      echo >&2
+      show_new_backup_reminder
+      exit 1
+  fi
+}
+
+
+
+###################################################################
+#################### synbak command usage and arguments validations
+
+# synbak command prompt usage
+synbak_usage() {
+  local progname=$0
+  msg "\${synbak_description}
+\${synbak_copyright}
+written by \${synbak_author}
+version \${synbak_version} - \${synbak_version_date}
+
+usage: \$progname [<options>]
+
+option:  argument:            description:
+------------------------------------------------------------------------------
+  -s     <system name>        the system name of backup
+  -m     <method name>        the method to use for backing up your data
+  -r     <report name>        manage only a report and not a backup (optional)
+  -M     <method options>     additional method options (optional, read FAQ)
+  -R     <report options>     additional report options (optional, read FAQ)
+  -o     <override variable>  override variables specified into config file
+  -d                          verbose output (report_stdout=yes)
+  -v                          show \${synbak_package} version
+  -h                          show this help screen
+
+example: \$progname -s webserver -m rsync
+"
+}
+
+
+NO_ARGS=0
+E_OPTERROR=65
+
+if [ $# -eq "$NO_ARGS" ]; then  # Script invoked with no command-line args?
+  synbak_usage >&2
+  echo
+  msg "please enter a command line parameter!" >&2
+  echo
+  exit $E_OPTERROR        # Exit and explain usage, if no argument(s) given.
+fi
+
+
+while getopts ":s:m:r:S:M:R:o:dhv" option
+do
+  #echo "$option" $OPTIND $OPTARG
+  case $option in
+   v) # show version
+      msg "\${synbak_package} version \${synbak_version} - \${synbak_version_date}"
+      echo
+      exit 0
+      ;;
+   h) # show help screen
+      synbak_usage
+      exit 0
+      ;;
+   s) # system name
+      system="${OPTARG}"
+      #echo system: $system
+      ;;
+   m) # backup method
+      method="${OPTARG}"
+      #echo method: $method
+      ;;
+   r) # backup report
+      report="${OPTARG}"
+      #echo report: $report
+      ;;
+   S) # system name
+      system_option="${OPTARG}"
+      #echo system: $system
+      ;;
+   M) # method options
+      method_option="${OPTARG}"
+      #echo method: $method
+      ;;
+   R) # report options
+      report_option="${OPTARG}"
+      #echo report_option: $report_option
+      ;;
+   o) # override_variable
+      override_variable="${OPTARG}"
+
+      override_variable_field="$(echo ${override_variable} | grep -v ^"#" | awk -F"=" '{print $1}' | tr -d [:cntrl:] | sed 's/\"//g' | sed 's/^ *//g' | sed 's/ *$//g')"
+      override_variable_value="$(echo ${override_variable} | grep -v ^"#" | tail -n 1 | grep "=" | sed 's/=/==AWKFIELD==/' | awk -F "==AWKFIELD==" '{print $2}' | awk -F "#" '{print $1}' | tr -d [:cntrl:] | sed 's/\"//g' | sed 's/^ *//g' | sed 's/ *$//g')"
+
+      valid_variable_field="$(cat ${sys_file_conf_template} | sed '/^#/d' | sed '/^$/d' | sed 's/=/ /' | awk '{print $1}' | sed 's/$/ /' | tr -d "\n" | sed 's/ $//')"
+
+      #echo field: $override_variable_field
+      #echo value: $override_variable_value
+
+      if [ -n "$(echo ${valid_variable_field} | grep -w "${override_variable_field}" 2>/dev/null)"  ]
+	then
+      		eval ${override_variable_field}=\"${override_variable_value}\"
+	else
+		msg "unknown override variable specified: \${override_variable_field}" >&2
+		echo >&2
+		echo >&2
+		msg "usage example: synbak -s system -m method -o \"backup_source=/tmp /var\"" >&2
+		echo >&2
+		echo >&2
+		msg "valid configuration variables:" >&2
+		echo >&2
+		echo ${valid_variable_field} | sed 's/ /\n/g' | sort >&2
+		exit 1
+      fi
+      #echo override_variable: $override_variable
+      ;;
+   d) # debug (assume report_stdout always yes)
+      report_stdout="yes"
+      ;;
+   *) # any other switch
+      #synbak_usage >&2
+      #echo
+      msg "invalid switch specified - abort." >&2
+      echo
+      exit 1
+      ;;
+   esac
+done
+# move argument pointer to next
+shift $(($OPTIND - 1))
+
+
+#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#
+#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@# BACKUP PROCEDURES
+#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#
+
+# Let's begin the dance!
+usr_init_variables		# valorize the main variables
+sys_check_env			# check if the operating system enviropment is OK
+usr_make_tmp_files		# create the temp files
+usr_check_env			# check if the user e nviropment is OK
+usr_config_field_import_default	# import the default fields
+save_time_begin			# save the begin time before make any backup
+
+# if the report switch has arguments, then show if they are valid
+if [ "${report}" != "" ]
+  then
+    report_run "$report" "$report_option"
+    exit $?
+fi
+
+# make the backup and the default reports
+if [ "${report_stdout}" = "no" ] || [ "${report_remote_uri_down}" = "no" ]
+  then
+    usr_make_backup 2>&1 | save_output > /dev/null # don't show the log on stdout
+
+    # exit and print the output if the backup field import fail
+    [ $(cat ${file_status_config_field_import}) -ne 0 ] && cat "${file_log_output}" && exit 1
+
+    # if an error occur and the config field report_stdout_on_errors=yes, print the complete text report
+    if [ "${report_stdout}" = "yes" ] || [[ $(check_status_backup >/dev/null 2>&1 ; echo $?) -eq 1 && "${report_stdout_on_errors}" = "yes" ]]
+      then
+        # Print some useful info
+        #echo "check_status_backup     = $(check_status_backup >/dev/null 2>&1 ; echo $?)"
+        #echo "report_stdout_on_errors = ${report_stdout_on_errors}"
+        #echo "file_status_host        = $(cat ${file_status_host})"
+        #echo "report_remote_uri_down  = ${report_remote_uri_down}"
+
+	if [ -z "${report_remote_uri_down}" ] || [ "${report_remote_uri_down}" = "yes" ]
+	  then
+            cat ${file_log_output}
+	elif [[ "${report_remote_uri_down}" = "no"  && "$(cat ${file_status_host})" = "0" ]]
+	  then
+            cat ${file_log_output}
+        fi
+    fi
+  else
+    usr_make_backup 2>&1 | save_output
+fi
+
+# echo config_field_import_status=${config_field_import_status}
+
+# save some useful information (WARNING! use this only for debug porpouse, because this command dump passwords also!!!)
+#set > "${file_synbak_vars}"
+
+# If we no error occur, then erase all temp files and directories
+[ $(check_status_backup >/dev/null 2>&1 ; echo $?) -eq 0 ] && rm -rf "${dir_tmp}" && exit 0 || exit 1
+
+

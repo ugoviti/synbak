@@ -1,0 +1,8 @@
+# List of files which contain translatable strings.
+# Copyright (C) 1996-2005 InitZero S.r.l.
+# Package source files
+#[encoding: UTF-8]
+src/synbak.sh.in
+src/functions.sh
+src/report/email/email.sh
+src/report/html/html.sh

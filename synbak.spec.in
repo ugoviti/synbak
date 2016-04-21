@@ -1,0 +1,85 @@
+Name:      synbak
+Version:   @VERSION@
+Release:   @RELEASE@
+Summary:   synbak - Universal Backup System
+URL:       http://www.initzero.it/products/opensource/synbak/
+Source:    http://www.initzero.it/products/opensource/synbak/download/%{name}-%{version}.tar.gz
+License:   GPLv3+
+BuildArch: noarch
+Group:     Applications/File
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
+Requires:  coreutils, bash >= 2.0, gettext >= 0.14, mktemp >= 1.5, grep, findutils, gawk, sed, nc, bc, which
+Requires:  rsync, samba-client, tar, mysql, postgresql, openldap-clients, wget, mtx, mt-st
+Requires:  /usr/bin/cdrecord, /usr/bin/mkisofs
+BuildRequires: automake, autoconf
+
+%description
+synbak is an application designed to unify several backup methods.
+synbak provides a powerful reporting system and a very simple interface
+for configuration files.
+synbak is a wrapper for several existing backup software suppling the
+end user with a common method for configuration that will manage the
+execution logic for every single backup and will give detailed reports
+of backups result.
+
+synbak can make backups using:
+- RSync over ssh, rsync daemon, smb and cifs protocols (automount functions)
+- Tar archives (tar, tar.gz and tar.bz2)
+- Tape devices (using multi loader changer tapes too)
+- LDAP databases
+- MySQL databases
+- PostgreSQL databases
+- Oracle databases
+- CD-RW/DVD-RW
+- Wget to mirror HTTP/FTP servers
+
+synbak can make reports using:
+- EMail
+- HTML pages
+- RSS feeds
+
+Moreover, if you are a developer and want to contribute,
+the modular nature of synbak will allow you to easly write
+new backup methods, reports, and translations.
+
+%prep
+%setup -q
+
+%build
+%configure
+%{__make} %{?_smp_mflags}
+
+%install
+%{__rm} -rf %{buildroot}
+%{__make} install DESTDIR="%{buildroot}"
+%find_lang %{name}
+
+%clean
+%{__rm} -rf %{buildroot}
+
+%files -f %{name}.lang
+%defattr(-,root,root)
+%{_bindir}/*
+%{_datadir}/%{name}
+%doc %{_docdir}/*
+
+%changelog
+* Mon Sep 22 2008 Ugo Viti <ugo.viti@initzero.it> - 1.2.2-1
+- New upstream release
+
+* Tue Feb 19 2008 Ugo Viti <ugo.viti@initzero.it> - 1.2.1-2
+- Added %{?dist} tag to the release
+
+* Tue Feb 19 2008 Ugo Viti <ugo.viti@initzero.it> - 1.2.1-1
+- Fixed the spec file using the Fedora Packaging Guidelines
+
+* Sun Jan 13 2008 Ugo Viti <ugo.viti@initzero.it> - 1.2.0-1
+- Updated this spec file
+
+* Thu Sep 14 2006 Ugo Viti <ugo.viti@initzero.it> - 1.0.9-1
+- Updated this spec file
+
+* Sat Feb 18 2006 Ugo Viti <ugo.viti@initzero.it> - 1.0.0-1
+- First public release!
+- Complete rewrite from scratch
+

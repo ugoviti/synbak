@@ -1,0 +1,10 @@
+^(SYNBAK-EMPTY-NONERRORS-STRINGS-PLACEHOLDER-DONT-REMOVE)$
+^scsidev:
+^devname:
+^scsibus:
+^Linux sg driver version:
+^cdrecord: Found DVD media
+^cdrecord: Drive needs to reload
+^cdrecord: Success
+^cdrecord: WARNING: Drive returns wrong startsec
+using inofficial libscg transport code version

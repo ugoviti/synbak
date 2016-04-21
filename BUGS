@@ -1,0 +1,9 @@
+Architecture:
+  no bugs known
+
+Methods:
+  laserdisc
+	- this method support rewritable media only (aka no CD-R/DVD-R support)
+
+Reports:
+  no bugs known
