@@ -1438,7 +1438,7 @@ check_status_host() {
           else
 	   nc -w 2 "$1" "$2" </dev/null >/dev/null 2>&1
            # nmap-netcat from centos > 7 require option -4
-	   #nc -4 "$1" "$2" </dev/null >/dev/null 2>&1
+	   #nc -w 2 "$1" "$2" </dev/null >/dev/null 2>&1
         fi
         return $?
   }
@@ -1626,7 +1626,7 @@ backup_schedule() {
  }
 
  # anyway execute the backups only if we can keep more than 0 backups of course :)
- if   [[ ${backup_schedule_yearly_cron} -gt 0 && ${run_yearly}  -eq 0 ]]
+ if   [[ ${backup_schedule_yearly_keep} -gt 0 && ${run_yearly}  -eq 0 ]]
    then 
         local type=yearly
         [ ${method} = "rsync" ] && find_good_rsync_backups
@@ -1634,7 +1634,7 @@ backup_schedule() {
 	backup_keep="${backup_schedule_yearly_keep}"
 	method_type="$(msg yearly)"
 
- elif [[ ${backup_schedule_monthly_cron} -gt 0 && ${run_monthly} -eq 0 ]]
+ elif [[ ${backup_schedule_monthly_keep} -gt 0 && ${run_monthly} -eq 0 ]]
    then 
         local type=monthly
         [ ${method} = "rsync" ] && find_good_rsync_backups
@@ -1642,7 +1642,7 @@ backup_schedule() {
 	backup_keep="${backup_schedule_monthly_keep}"
 	method_type="$(msg monthly)"
 
- elif [[ ${backup_schedule_weekly_cron} -gt 0 && ${run_weekly} -eq 0 ]]
+ elif [[ ${backup_schedule_weekly_keep} -gt 0 && ${run_weekly} -eq 0 ]]
    then 
         local type=weekly
         [ ${method} = "rsync" ] && find_good_rsync_backups
@@ -1650,7 +1650,7 @@ backup_schedule() {
 	backup_keep="${backup_schedule_weekly_keep}"
 	method_type="$(msg weekly)"
 
- elif [[ ${backup_schedule_daily_cron} -gt 0 && ${run_daily} -eq 0 ]]
+ elif [[ ${backup_schedule_daily_keep} -gt 0 && ${run_daily} -eq 0 ]]
    then 
         local type=daily
         [ ${method} = "rsync" ] && find_good_rsync_backups
