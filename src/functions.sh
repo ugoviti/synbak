@@ -1434,7 +1434,7 @@ check_status_host() {
 	if   [ $(which netcat >/dev/null 2>&1 ; echo $?) = 0 ]
           then
            #echo "We are using netcat!!!"
-	   netcat "$1" "$2" </dev/null >/dev/null 2>&1
+	   netcat -z -t 2 "$1" "$2" </dev/null >/dev/null 2>&1
           else
 	   nc -w 2 "$1" "$2" </dev/null >/dev/null 2>&1
            # nmap-netcat from centos > 7 require option -4
@@ -1485,6 +1485,13 @@ mount_host(){
  # Create the temp mount directory
  #dir_mnt="${dir_mnt}/${backup_source_uri_path}"
  mkdir -p "${dir_mnt}"
+
+ # fix domain into username
+ if [ ! -z $(echo $backup_source_uri_username | grep -e '/' -e '\\') ]; then
+     domain=$(echo $backup_source_uri_username | tr -s '/' ' ' | tr -s '\\' ' ' | awk '{print $1}')
+   username=$(echo $backup_source_uri_username | tr -s '/' ' ' | tr -s '\\' ' ' | awk '{print $2}')
+   backup_source_uri_username="$username,domain=$domain"
+ fi
 
  mount_cifs(){
    mount.cifs //"${backup_source_uri_host}"/"${backup_source_uri_path}" "${dir_mnt}" -o ro$([ -n "${backup_source_uri_username}" ] && echo ",username=$backup_source_uri_username")$([ -n "${backup_source_uri_password}" ] && echo ",password=$backup_source_uri_password" || echo ",guest")
@@ -1629,7 +1636,7 @@ backup_schedule() {
  if   [[ ${backup_schedule_yearly_keep} -gt 0 && ${run_yearly}  -eq 0 ]]
    then 
         local type=yearly
-        [ ${method} = "rsync" ] && find_good_rsync_backups
+	[[ ${method_rsync_differential} != "yes" && ${method} = "rsync" ]] && find_good_rsync_backups
 	backup_destination="${backup_destination}/${type}"
 	backup_keep="${backup_schedule_yearly_keep}"
 	method_type="$(msg yearly)"
@@ -1637,7 +1644,7 @@ backup_schedule() {
  elif [[ ${backup_schedule_monthly_keep} -gt 0 && ${run_monthly} -eq 0 ]]
    then 
         local type=monthly
-        [ ${method} = "rsync" ] && find_good_rsync_backups
+	[[ ${method_rsync_differential} != "yes" && ${method} = "rsync" ]] && find_good_rsync_backups
 	backup_destination="${backup_destination}/${type}"
 	backup_keep="${backup_schedule_monthly_keep}"
 	method_type="$(msg monthly)"
@@ -1645,7 +1652,7 @@ backup_schedule() {
  elif [[ ${backup_schedule_weekly_keep} -gt 0 && ${run_weekly} -eq 0 ]]
    then 
         local type=weekly
-        [ ${method} = "rsync" ] && find_good_rsync_backups
+	[[ ${method_rsync_differential} != "yes" && ${method} = "rsync" ]] && find_good_rsync_backups
 	backup_destination="${backup_destination}/${type}"
 	backup_keep="${backup_schedule_weekly_keep}"
 	method_type="$(msg weekly)"
@@ -1653,7 +1660,7 @@ backup_schedule() {
  elif [[ ${backup_schedule_daily_keep} -gt 0 && ${run_daily} -eq 0 ]]
    then 
         local type=daily
-        [ ${method} = "rsync" ] && find_good_rsync_backups
+	[[ ${method_rsync_differential} != "yes" && ${method} = "rsync" ]] && find_good_rsync_backups
 	backup_destination="${backup_destination}/${type}"
 	backup_keep="${backup_schedule_daily_keep}"
 	method_type="$(msg daily)"
