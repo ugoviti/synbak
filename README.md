@@ -1,5 +1,6 @@
 ## synbak - Universal Backup System
-http://www.initzero.it/products/opensource/synbak/
+http://www.initzero.it/products/opensource/synbak/ <br/>
+Author: Ugo Viti <ugo.viti@initzero.it>
 
 ## What is synbak?
 synbak is an application designed to unify several backup methods. synbak provides a powerful reporting system and a very simple interface for configuration files.
