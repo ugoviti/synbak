@@ -1433,11 +1433,11 @@ check_status_host() {
         # because on some distributions 'nc' command is named 'netcat', we must manage that!
 	if   [ $(which netcat >/dev/null 2>&1 ; echo $?) = 0 ]
           then
-           #echo "We are using netcat!!!"
-	   netcat -z -t 2 "$1" "$2" </dev/null >/dev/null 2>&1
+           #echo "we are using netcat!!!"
+	   netcat -w 2 "$1" "$2" </dev/null >/dev/null 2>&1
           else
 	   nc -w 2 "$1" "$2" </dev/null >/dev/null 2>&1
-           # nmap-netcat from centos > 7 require option -4
+           # nmap-netcat from centos > 7 require option -4 ???
 	   #nc -w 2 "$1" "$2" </dev/null >/dev/null 2>&1
         fi
         return $?

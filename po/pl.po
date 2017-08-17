@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 3.0\n"
 "Report-Msgid-Bugs-To: opensource@initzero.it\n"
-"POT-Creation-Date: 2017-01-03 13:05+0100\n"
+"POT-Creation-Date: 2017-03-18 12:47+0100\n"
 "PO-Revision-Date: 2013-03-07 11:53+0100\n"
 "Last-Translator: Piotr Smalira <p.smalira@g16-lublin.eu>\n"
 "Language-Team: Piotr Smalira <p.smalira@g16-lublin.eu>\n"
@@ -442,23 +442,23 @@ msgstr "Wolna przestrzeń i aktywne punkty montowania: "
 msgid "backups"
 msgstr "backupy"
 
-#: src/functions.sh:1635
+#: src/functions.sh:1642
 msgid "yearly"
 msgstr "rocznie"
 
-#: src/functions.sh:1643
+#: src/functions.sh:1650
 msgid "monthly"
 msgstr "miesięcznie"
 
-#: src/functions.sh:1651
+#: src/functions.sh:1658
 msgid "weekly"
 msgstr "tygodniowo"
 
-#: src/functions.sh:1659
+#: src/functions.sh:1666
 msgid "daily"
 msgstr "dziennie"
 
-#: src/functions.sh:1683
+#: src/functions.sh:1690
 msgid "single"
 msgstr "jednorazowo"
 

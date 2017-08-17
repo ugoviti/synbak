@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 3.0\n"
 "Report-Msgid-Bugs-To: opensource@initzero.it\n"
-"POT-Creation-Date: 2017-01-03 13:05+0100\n"
+"POT-Creation-Date: 2017-03-18 12:47+0100\n"
 "PO-Revision-Date: 2006-01-30 17:04+0100\n"
 "Last-Translator: Ugo Viti <ugo.viti@initzero.it>\n"
 "Language-Team: Ugo Viti <ugo.viti@initzero.it>\n"
@@ -444,23 +444,23 @@ msgstr "Spazio libero e mount point attivi: "
 msgid "backups"
 msgstr "backup"
 
-#: src/functions.sh:1635
+#: src/functions.sh:1642
 msgid "yearly"
 msgstr "annuale"
 
-#: src/functions.sh:1643
+#: src/functions.sh:1650
 msgid "monthly"
 msgstr "mensile"
 
-#: src/functions.sh:1651
+#: src/functions.sh:1658
 msgid "weekly"
 msgstr "settimanale"
 
-#: src/functions.sh:1659
+#: src/functions.sh:1666
 msgid "daily"
 msgstr "giornaliero"
 
-#: src/functions.sh:1683
+#: src/functions.sh:1690
 msgid "single"
 msgstr "singolo"
 
