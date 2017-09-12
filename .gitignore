@@ -65,9 +65,6 @@ po/it.gmo
 po/pl.gmo
 po/quot.sed
 po/remove-potcdate.sin
-po/remove-potcdate.sed
-po/stamp-po
-po/synbak.pot
 src/Makefile
 src/Makefile.in
 src/method/Makefile
