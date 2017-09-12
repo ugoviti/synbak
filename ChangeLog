@@ -1,8 +1,9 @@
-3.6 - 20170126
+3.6 - 20170912
 ================
  * Fixed method_rsync_differential using --link-dest not needed
  * Fixed mount cifs when specifing domain into username field, ex: cifs://DOMAIN/username:password@host
  * Fixed service port testing on debian systems (Thanks ehabheikal)
+ * added new method: scp
 
 3.5 - 20170103
 ================

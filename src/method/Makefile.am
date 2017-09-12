@@ -6,6 +6,7 @@ SUBDIRS=\
 	pgsql	\
 	oracle	\
 	rsync	\
+	scp	\
 	tape	\
 	tar	\
 	wget

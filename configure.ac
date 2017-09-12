@@ -3,7 +3,7 @@
 AC_INIT([synbak], [3.6], [opensource@initzero.it])
 AC_CONFIG_SRCDIR([src])
 AM_INIT_AUTOMAKE
-VERSION_DATE="20170103"
+VERSION_DATE="20170912"
 RELEASE="1"
 
 AC_SUBST(VERSION_DATE)
@@ -31,6 +31,7 @@ src/method/mysql/Makefile
 src/method/pgsql/Makefile
 src/method/oracle/Makefile
 src/method/rsync/Makefile
+src/method/scp/Makefile
 src/method/tape/Makefile
 src/method/tar/Makefile
 src/method/wget/Makefile
