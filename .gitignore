@@ -83,6 +83,8 @@ src/method/pgsql/Makefile
 src/method/pgsql/Makefile.in
 src/method/rsync/Makefile
 src/method/rsync/Makefile.in
+src/method/scp/Makefile
+src/method/scp/Makefile.in
 src/method/tape/Makefile
 src/method/tape/Makefile.in
 src/method/tar/Makefile
