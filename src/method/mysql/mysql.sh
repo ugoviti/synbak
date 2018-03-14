@@ -28,7 +28,7 @@ config_field_import backup_source_uri uri  notnull	"${usr_file_conf}" keep
 
 # variables useful to this method
 backup_method_cmd="mysqldump"
-backup_method_opts_default="-C --opt --force --events"
+backup_method_opts_default="-C --force --databases --add-drop-database --opt --quote-names --events --routines --triggers --hex-blob"
 #backup_method_opts=""
 
 backup_name_prefix="backup"
