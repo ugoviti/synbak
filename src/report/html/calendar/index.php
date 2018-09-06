@@ -32,7 +32,7 @@ $myurl   = 0;
 ## No need to change anything below this line
 
 //Let's grab the proper working directory relative to the url.
-$rel_url = join(array_slice(split( "/" ,dirname($_SERVER['PHP_SELF'])),0,-1),"/");
+$rel_url = join(array_slice(explode( "/" ,dirname($_SERVER['PHP_SELF'])),0,-1),"/");
 
 $prog_dir = getcwd();  // get the current directory
 chdir(".."); //back it up one
