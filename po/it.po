@@ -1,5 +1,5 @@
 # synbak - Universal Backup System
-# Copyright (C) 2005-2006 InitZero S.r.l.
+# Copyright (C) 2005-2018 InitZero S.r.l.
 # This file is distributed under the same license as the synbak package.
 # Ugo Viti <ugo.viti@initzero.it>, 2006.
 #
@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 3.0\n"
 "Report-Msgid-Bugs-To: opensource@initzero.it\n"
-"POT-Creation-Date: 2018-10-06 10:44+0200\n"
+"POT-Creation-Date: 2018-10-06 11:12+0200\n"
 "PO-Revision-Date: 2006-01-30 17:04+0100\n"
 "Last-Translator: Ugo Viti <ugo.viti@initzero.it>\n"
 "Language-Team: Ugo Viti <ugo.viti@initzero.it>\n"

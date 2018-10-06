@@ -1,56 +1,57 @@
-# synbak - Universal Backup System
-# Copyright (C) 2013 InitZero S.r.l.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR InitZero S.r.l.
 # This file is distributed under the same license as the synbak package.
-# Piotr Smalira <p.smalira@g16-lublin.eu>
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: 3.0\n"
+"Project-Id-Version: synbak 3.7\n"
 "Report-Msgid-Bugs-To: opensource@initzero.it\n"
 "POT-Creation-Date: 2018-10-06 11:12+0200\n"
-"PO-Revision-Date: 2013-03-07 11:53+0100\n"
-"Last-Translator: Piotr Smalira <p.smalira@g16-lublin.eu>\n"
-"Language-Team: Piotr Smalira <p.smalira@g16-lublin.eu>\n"
-"Language: pl\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: src/synbak.sh.in:120
 #, sh-format
 msgid "ERROR: the directory '${dir_tmp}' doesn't exist"
-msgstr "BŁĄD: folder '${dir_tmp}' nie istnieje"
+msgstr ""
 
 #: src/synbak.sh.in:204
 #, sh-format
 msgid "ERROR: can't find the '${sys_file_functions}' file"
-msgstr "BŁĄD: nie można odnaleźć pliku '${sys_file_functions}'"
+msgstr ""
 
 #: src/synbak.sh.in:233
 msgid "ERROR: no 'system name' specified - abort"
-msgstr "BŁĄD: nie określono wartości 'nazwa systemu' - anulowanie"
+msgstr ""
 
 #: src/synbak.sh.in:240
 msgid "ERROR: no 'backup method' specified - abort"
-msgstr "BŁĄD: nie określono wartości 'metoda backupu' - anulowanie"
+msgstr ""
 
 #: src/synbak.sh.in:249
 #, sh-format
 msgid "ERROR: '${method}' backup method doesn't exist!"
-msgstr "BŁĄD: Metoda backupu '${method}' nie istnieje!"
+msgstr ""
 
 #: src/synbak.sh.in:252
 msgid "valid methods:"
-msgstr "Prawidłowe metody:"
+msgstr ""
 
 #: src/synbak.sh.in:262
 #, sh-format
 msgid "ERROR: '${report}' backup report doesn't exist!"
-msgstr "BŁĄD: Raport backupu '${report}' nie istnieje!"
+msgstr ""
 
 #: src/synbak.sh.in:265
 msgid "valid reports:"
-msgstr "Prawidłowe raporty:"
+msgstr ""
 
 #: src/synbak.sh.in:296
 #, sh-format
@@ -59,14 +60,11 @@ msgid ""
 "command and retry:\n"
 "      cp ${sys_file_conf_template} ${usr_dir}/${method}/${system}.conf\n"
 msgstr ""
-"INFORMACJA: jeżeli uruchamiasz to zadanie backupu po raz pierwszy, uruchom "
-"następujące polecenie i spróbuj ponownie:\n"
-"      cp ${sys_file_conf_template} ${usr_dir}/${method}/${system}.conf\n"
 
 #: src/synbak.sh.in:323
 #, sh-format
 msgid "ERROR: '${usr_file_conf}' system config file doesn't exist!"
-msgstr "BŁAD: Plik konfiguracyjny '${usr_file_conf}' nie istnieje!"
+msgstr ""
 
 #: src/synbak.sh.in:339
 #, sh-format
@@ -95,246 +93,220 @@ msgid ""
 "\n"
 "example: $progname -s webserver -m rsync\n"
 msgstr ""
-"${synbak_description}\n"
-"${synbak_copyright}\n"
-"Napisany przez ${synbak_author}\n"
-"wersja ${synbak_version} - ${synbak_version_date}\n"
-"\n"
-"użycie: $progname [<opcje>]\n"
-"\n"
-"opcja:  wartość:            opis:\n"
-"------------------------------------------------------------------------------\n"
-"  -s     <nazwa systemu>      nazwa systemu do backupu\n"
-"  -m     <nazwa metody>       metoda używana do backupu danych\n"
-"  -r     <nazwa raportu>      Opcja dotyczy jedynie raportu, a nie backupu "
-"(opcjonalnie)\n"
-"  -M     <opcje metody>       dodatkowe opcje metod (opcjonalnie, przeczytaj "
-"FAQ (po angielsku))\n"
-"  -R     <opcje raportu>      dodatkowe opcje raportów (opcjonalnie, "
-"przeczytaj FAQ (po angielsku))\n"
-"  -o     <ignorowane zmienne> ignoruje zmienne, określone w pliku "
-"konfiguracyjnym\n"
-"  -d                          szczegółowe wyjście (report_stdout=yes)\n"
-"  -v                          pokaż wersję ${synbak_package}\n"
-"  -h                          pokaż ten ekran pomocy\n"
-"\n"
-"przykład: $progname -s serwerwww -m rsync\n"
 
 #: src/synbak.sh.in:369
 msgid "please enter a command line parameter!"
-msgstr "Proszę podać parametr wiersza poleceń!"
+msgstr ""
 
 #: src/synbak.sh.in:380
 #, sh-format
 msgid "${synbak_package} version ${synbak_version} - ${synbak_version_date}"
-msgstr "${synbak_package} w wersji ${synbak_version} - ${synbak_version_date}"
+msgstr ""
 
 #: src/synbak.sh.in:427
 #, sh-format
 msgid "unknown override variable specified: ${override_variable_field}"
-msgstr "Podano nieznaną zmienną do zignorowania: ${override_variable_field}"
+msgstr ""
 
 #: src/synbak.sh.in:430
 msgid ""
 "usage example: synbak -s system -m method -o \"backup_source=/tmp /var\""
 msgstr ""
-"przykład użycia: synbak -s nazwa_systemu -m nazwa_metody -o \"backup_source=/"
-"tmp /var\""
 
 #: src/synbak.sh.in:433
 msgid "valid configuration variables:"
-msgstr "Prawidłowe zmienne konfiguracyjne"
+msgstr ""
 
 #: src/synbak.sh.in:446
 msgid "invalid switch specified - abort."
-msgstr "Podano nieprawidłowy przełącznik - anulowanie"
+msgstr ""
 
 #: src/functions.sh:39
 msgid "             System: "
-msgstr "             System: "
+msgstr ""
 
 #: src/functions.sh:40
 msgid "             Method: "
-msgstr "             Metoda: "
+msgstr ""
 
 #: src/functions.sh:41
 msgid "             Option: "
-msgstr "             Opcja: "
+msgstr ""
 
 #: src/functions.sh:42
 msgid "               Type: "
-msgstr "               Typ: "
+msgstr ""
 
 #: src/functions.sh:43
 msgid "           Base URI: "
-msgstr "         Podstawowy URI: "
+msgstr ""
 
 #: src/functions.sh:44
 msgid "             Source: "
-msgstr "             Lokalizacja źródłowa: "
+msgstr ""
 
 #: src/functions.sh:45
 msgid "         Backing up: "
-msgstr "         Backup: "
+msgstr ""
 
 #: src/functions.sh:46
 msgid "        Destination: "
-msgstr "        Lokalizacja docelowa: "
+msgstr ""
 
 #: src/functions.sh:47
 msgid "   Real destination: "
-msgstr "   Realna lokalizacja docelowa: "
+msgstr ""
 
 #: src/functions.sh:48
 msgid "          Exclusion: "
-msgstr "          Wyłączenia: "
+msgstr ""
 
 #: src/functions.sh:49
 msgid "       Keep backups: "
-msgstr "       Ptzechowywanie kopii: "
+msgstr ""
 
 #: src/functions.sh:50
 msgid "     Method options: "
-msgstr "     Opcje metody: "
+msgstr ""
 
 #: src/functions.sh:51
 msgid "    Veryfing backup: "
-msgstr "    Weryfikacja backupu"
+msgstr ""
 
 #: src/functions.sh:55
 msgid "     Kernel version: "
-msgstr "     Wersja kernela: "
+msgstr ""
 
 #: src/functions.sh:56
 msgid "       Differential: "
-msgstr "        Różnicowo: "
+msgstr ""
 
 #: src/functions.sh:57
 msgid "  Technical support: "
-msgstr "  Wsparcie techniczne: "
+msgstr ""
 
 #: src/functions.sh:58
 msgid "       Backup begin: "
-msgstr "       Rozpoczęcie backupu: "
+msgstr ""
 
 #: src/functions.sh:59
 msgid "         Backup end: "
-msgstr "         Zakończenie backupu: "
+msgstr ""
 
 #: src/functions.sh:60
 msgid "    Backup duration: "
-msgstr "    Czas trwania backupu: "
+msgstr ""
 
 #: src/functions.sh:61
 msgid "    Keeping backups: "
-msgstr "    Przechowywanie backupów: "
+msgstr ""
 
 #: src/functions.sh:62
 msgid "    Erasing backups: "
-msgstr "    Usuwania backupów: "
+msgstr ""
 
 #: src/functions.sh:63
 msgid "       Loading tape: number "
-msgstr "       Ładowanie taśmy: numer "
+msgstr ""
 
 #: src/functions.sh:63 src/functions.sh:68
 msgid "on"
-msgstr "na"
+msgstr ""
 
 #: src/functions.sh:64
 msgid "     Unloading tape: from "
-msgstr "     Odłączanie taśmy: z "
+msgstr ""
 
 #: src/functions.sh:65
 msgid "    Ejecting device: "
-msgstr "    Odłączanie urządzenia: "
+msgstr ""
 
 #: src/functions.sh:66
 msgid "    Blanking device: "
-msgstr "    Czyszczenie urządzenia: "
+msgstr ""
 
 #: src/functions.sh:67
 msgid "Gen. databases list: "
-msgstr "Lista baz danych: "
+msgstr ""
 
 #: src/functions.sh:68
 msgid "           Mounting: "
-msgstr "           Montowanie: "
+msgstr ""
 
 #: src/functions.sh:69
 msgid "         Unmounting: "
-msgstr "         Odmontowanie: "
+msgstr ""
 
 #: src/functions.sh:70
 msgid " Total source files: "
-msgstr " Ogółem plików źródłowych: "
+msgstr ""
 
 #: src/functions.sh:71
 msgid "       Backup files: "
-msgstr "       Plików w backupie"
+msgstr ""
 
 #: src/functions.sh:72
 msgid "        Backup size: "
-msgstr "        Rozmiar backupu: "
+msgstr ""
 
 #: src/functions.sh:73
 msgid "   Destination size: "
-msgstr "   Rozmiar lokalizacji docelowej: "
+msgstr ""
 
 #: src/functions.sh:74
 msgid "        Source size: "
-msgstr "        Rozmiar lokalizacji źródłowej: "
+msgstr ""
 
 #: src/functions.sh:75
 msgid "       Backup speed: "
-msgstr "       Prędkość backupu: "
+msgstr ""
 
 #: src/functions.sh:76
 msgid "  Generating report: "
-msgstr "  Generowanie raportu: "
+msgstr ""
 
 #: src/functions.sh:77
 msgid "      Backup result: "
-msgstr "      Rezultat backupu: "
+msgstr ""
 
 #: src/functions.sh:78
 msgid "Files:"
-msgstr "Pliki:"
+msgstr ""
 
 #: src/functions.sh:79
 msgid "Size:"
-msgstr "Rozmiar:"
+msgstr ""
 
 #: src/functions.sh:80
 msgid "Speed:"
-msgstr "Prędkość:"
+msgstr ""
 
 #: src/functions.sh:81
 msgid "Duration:"
-msgstr "Czas trwania:"
+msgstr ""
 
 #: src/functions.sh:82
 msgid "Status:"
-msgstr "Stan"
+msgstr ""
 
 #: src/functions.sh:85
 msgid "ERROR: an error is occurred in this step, follow error details:"
-msgstr "BŁĄD: wystąpił błąd na tym etapie, zapoznaj się ze szczegółami błędu:"
+msgstr ""
 
 #: src/functions.sh:86
 #, sh-format
 msgid "ERROR: the remote host '${backup_source_uri_host}' is down"
-msgstr "BŁAD: zdalny host '${backup_source_uri_host}' nie odpowiada"
+msgstr ""
 
 #: src/functions.sh:87
 #, sh-format
 msgid "ERROR: '$dir' directory doesn't exist or it isn't accessible"
-msgstr "BŁĄD: folder '$dir' nie istnieje lub nie jest dostępny"
+msgstr ""
 
 #: src/functions.sh:88
 #, sh-format
 msgid "ERROR: '$file' file doesn't exist or it isn't accessible"
-msgstr "BŁAD: Plik '$file' nie istnieje lub nie jest dostępny"
+msgstr ""
 
 #: src/functions.sh:89
 #, sh-format
@@ -342,14 +314,12 @@ msgid ""
 "ERROR: '$file' file doesn't exist, isn't writable or it's not a character "
 "device"
 msgstr ""
-"BŁĄD: plik '$file' nie istnieje, nie jest zapisywalny lub nie jest "
-"urządzeniem znakowym"
 
 #: src/functions.sh:90
 #, sh-format
 msgid ""
 "ERROR: in file '${usr_file_conf}' the mandatory '${field}' field is empty"
-msgstr "BŁĄD: w pliku '${usr_file_conf}' wymagane pole '${field}' jest puste"
+msgstr ""
 
 #: src/functions.sh:91
 #, sh-format
@@ -357,12 +327,10 @@ msgid ""
 "ERROR: in file '${usr_file_conf}' the field '${field}' contains invalid "
 "data: '${value}'"
 msgstr ""
-"Błąd: w pliku '${usr_file_conf}' pole '${field}' zawiera nieprawidłowe dane: "
-"'${value}'"
 
 #: src/functions.sh:92
 msgid "ERROR: not erasing old backups because an ERROR is occurred"
-msgstr "BŁAD: nie są usuwane starsze backupy ponieważ wystąpił BŁĄD"
+msgstr ""
 
 #: src/functions.sh:93
 #, sh-format
@@ -370,8 +338,6 @@ msgid ""
 "ERROR: the specified base URI '${backup_source_uri}' is not valid for the "
 "'${method}' backup method"
 msgstr ""
-"BŁĄD: określony podstawowy adres URI '${backup_source_uri}' nie jest "
-"prawidłowy dla metody backupu '${method}'"
 
 #: src/functions.sh:94
 #, sh-format
@@ -379,12 +345,10 @@ msgid ""
 "ERROR: the specified remote protocol '${backup_source_uri_protocol}' is "
 "unsupported by '${method}' backup method"
 msgstr ""
-"BŁĄD: określony zdalny protokół '${backup_source_uri_protocol}' jest "
-"nieobsługiwany przez metodę backupu '${method}'"
 
 #: src/functions.sh:95
 msgid "ERROR: unsupported remote mount share"
-msgstr "BŁĄD: nieobsługiwany zdalny udział montowania"
+msgstr ""
 
 #: src/functions.sh:96
 #, sh-format
@@ -392,8 +356,6 @@ msgid ""
 "ERROR: extra options are required, follow a list of usable extra options: "
 "$extra_option_right"
 msgstr ""
-"BŁĄD: wymagane są dodatkowe opcje, zapoznaj się z listą dostępnych "
-"dodatkowych opcji: $extra_option_right"
 
 #: src/functions.sh:97
 #, sh-format
@@ -401,13 +363,10 @@ msgid ""
 "ERROR: the specified extra option '$current_option' is invalid, follow a "
 "list of usable extra options: $extra_option_right"
 msgstr ""
-"BŁĄD: określona dodatkowa opcja '$current_option' jest nieprawidłowa, "
-"zapoznaj się z listą dostępnych dodatkowych opcji: $extra_option_right"
 
 #: src/functions.sh:98
 msgid "ERROR: internal error, please report this to developers"
 msgstr ""
-"BŁAD: wystąpił błąd wewnętrzny, prosimy złgosić ten fakt do developerów"
 
 #: src/functions.sh:99
 #, sh-format
@@ -416,51 +375,51 @@ msgstr ""
 
 #: src/functions.sh:100 src/report/html/html.sh:85
 msgid "OK"
-msgstr "OK"
+msgstr ""
 
 #: src/functions.sh:101 src/report/html/html.sh:86
 msgid "ERROR"
-msgstr "BŁĄD"
+msgstr ""
 
 #: src/functions.sh:102 src/report/html/html.sh:91
 msgid "unknow"
-msgstr "nieznany"
+msgstr ""
 
 #: src/functions.sh:111
 msgid "Backup informations: "
-msgstr "Informacje o backupie"
+msgstr ""
 
 #: src/functions.sh:114
 msgid "Directory list of "
-msgstr "Lista folderów dla "
+msgstr ""
 
 #: src/functions.sh:118
 msgid "Free space and active mount points: "
-msgstr "Wolna przestrzeń i aktywne punkty montowania: "
+msgstr ""
 
 #: src/functions.sh:955
 msgid "backups"
-msgstr "backupy"
+msgstr ""
 
 #: src/functions.sh:1642
 msgid "yearly"
-msgstr "rocznie"
+msgstr ""
 
 #: src/functions.sh:1650
 msgid "monthly"
-msgstr "miesięcznie"
+msgstr ""
 
 #: src/functions.sh:1658
 msgid "weekly"
-msgstr "tygodniowo"
+msgstr ""
 
 #: src/functions.sh:1666
 msgid "daily"
-msgstr "dziennie"
+msgstr ""
 
 #: src/functions.sh:1690
 msgid "single"
-msgstr "jednorazowo"
+msgstr ""
 
 #: src/report/email/email.sh:31
 #, sh-format
@@ -468,8 +427,6 @@ msgid ""
 "[${synbak_package}] server:[${synbak_server}] system:[${system}] method:"
 "[${method}] result:"
 msgstr ""
-"[${synbak_package}] serwer:[${synbak_server}] system:[${system}] metoda:"
-"[${method}] wynik:"
 
 #: src/report/html/html.sh:65
 #, sh-format
@@ -477,122 +434,117 @@ msgid ""
 "ERROR: the html destination directory '${report_html_destination_backup}' is "
 "not writable"
 msgstr ""
-"BŁĄD: folder docelowy HTML '${report_html_destination_backup}' jest "
-"niezapisywalny"
 
 #: src/report/html/html.sh:68 src/report/html/html.sh:69
 msgid "last update made at"
-msgstr "ostatnia zmiana dokonana o"
+msgstr ""
 
 #: src/report/html/html.sh:68
 #, sh-format
 msgid ""
 "by <a href='${synbak_homepage}'>${synbak_package}</a> v${synbak_version}"
 msgstr ""
-"przez <a href='${synbak_homepage}'>${synbak_package}</a> v${synbak_version}"
 
 #: src/report/html/html.sh:69
 #, sh-format
 msgid "by ${synbak_package} v${synbak_version}"
-msgstr "przez ${synbak_package} v${synbak_version}"
+msgstr ""
 
 #: src/report/html/html.sh:70
 msgid "Go to previous page"
-msgstr "Przejdź do poprzedniej strony"
+msgstr ""
 
 #: src/report/html/html.sh:71
 msgid "Year"
-msgstr "Rok"
+msgstr ""
 
 #: src/report/html/html.sh:72
 msgid "Month"
-msgstr "Miesiąc"
+msgstr ""
 
 #: src/report/html/html.sh:73
 msgid "Day"
-msgstr "Dzień"
+msgstr ""
 
 #: src/report/html/html.sh:74
 msgid "System"
-msgstr "System"
+msgstr ""
 
 #: src/report/html/html.sh:75
 msgid "Method"
-msgstr "Metoda"
+msgstr ""
 
 #: src/report/html/html.sh:76
 msgid "Option"
-msgstr "Opcja"
+msgstr ""
 
 #: src/report/html/html.sh:77
 msgid "Type"
-msgstr "Typ"
+msgstr ""
 
 #: src/report/html/html.sh:78
 msgid "Begin"
-msgstr "Rozpoczęcie"
+msgstr ""
 
 #: src/report/html/html.sh:79
 msgid "End"
-msgstr "Zakończenie"
+msgstr ""
 
 #: src/report/html/html.sh:80
 msgid "Duration"
-msgstr "Czas trwania"
+msgstr ""
 
 #: src/report/html/html.sh:81
 msgid "Bak. Size"
-msgstr "Rozmiar backupu"
+msgstr ""
 
 #: src/report/html/html.sh:82
 msgid "Tot. Size"
-msgstr "Rozmiar całkowity"
+msgstr ""
 
 #: src/report/html/html.sh:83
 msgid "Speed"
-msgstr "Prędkość"
+msgstr ""
 
 #: src/report/html/html.sh:84
 msgid "Result"
-msgstr "Wynik"
+msgstr ""
 
 #: src/report/html/html.sh:87
 msgid "Ok"
-msgstr "Ok"
+msgstr ""
 
 #: src/report/html/html.sh:88
 msgid "Errors"
-msgstr "Błędy"
+msgstr ""
 
 #: src/report/html/html.sh:89
 msgid "Totals"
-msgstr "Ogółem"
+msgstr ""
 
 #: src/report/html/html.sh:90
 msgid "Rebuilding indexes:"
-msgstr "Odbudowywanie indeksów:"
+msgstr ""
 
 #: src/report/html/html.sh:92
 msgid "Calendar View"
-msgstr "Widok kalendarza"
+msgstr ""
 
 #: src/report/html/html.sh:93
 msgid "Detailed View"
-msgstr "Widok szczegółowy"
+msgstr ""
 
 #: src/report/html/html.sh:94
 msgid "Overall state"
 msgstr ""
 
 #: src/report/html/html.sh:95
-#, fuzzy
 msgid "Last backup"
-msgstr "backupy"
+msgstr ""
 
 #: src/report/html/html.sh:96
-#, fuzzy
 msgid "Last error"
-msgstr "Błędy"
+msgstr ""
 
 #: src/report/html/html.sh:97
 msgid "Successful"
