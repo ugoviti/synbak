@@ -23,7 +23,7 @@
 # variables useful to this method
 backup_method_cmd="rsync"
 # teach rsync how to manage root "/" source backups
-backup_method_opts_default="--stats -a --delete --delete-excluded --numeric-ids -R"
+backup_method_opts_default="--stats -a --delete --delete-excluded --numeric-ids -R -H -S"
 #backup_method_opts_default="--stats -a --acls --xattrs --delete --delete-excluded" # For ACLs and xattrs backup
 
 #backup_method_opts=""

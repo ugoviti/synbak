@@ -5,6 +5,7 @@
  * Fixed service port testing on debian systems (Thanks ehabheikal)
  * added new method: scp
  * added new default options for mysql backup: -C --force --databases --add-drop-database --opt --quote-names --events --routines --triggers --hex-blob
+ * added -H (copy hard links) and -S (manage sparse files) default options to rsync method (thanks to Bakaras)
 
 3.5 - 20170103
 ================

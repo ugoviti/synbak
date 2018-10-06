@@ -17,4 +17,4 @@ for f in *.po; do
 done
 cd ..
 
-./configure
+#./configure
