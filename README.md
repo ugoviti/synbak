@@ -1,5 +1,4 @@
 ## synbak - Universal Backup System
-http://www.initzero.it/products/opensource/synbak/ <br/>
 Author: Ugo Viti <ugo.viti@initzero.it>
 
 ## What is synbak?
