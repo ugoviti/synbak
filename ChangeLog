@@ -1,3 +1,7 @@
+3.8 - 20200119
+================
+ * removed dangerous "--add-drop-database" option from mysql method
+
 3.7 - 20181006
 ================
  * added -H (preserve hard links) and -S (manage sparse files) default options to rsync method (thanks to Bakaras)
