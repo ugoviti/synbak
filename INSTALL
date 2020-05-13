@@ -33,6 +33,7 @@ Installing synbak:
 ------------------
    * you can install synbak from sources with:
 
+     $ ./autogen.sh
      $ ./configure (--prefix=/your/path to relocate the destination base dir)
      $ make
      $ make install
