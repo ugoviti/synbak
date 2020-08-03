@@ -9,7 +9,7 @@ BuildArch: noarch
 Group:     Applications/File
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 Requires:  coreutils, bash >= 2.0, gettext >= 0.14, mktemp >= 1.5, grep, findutils, gawk, sed, nc, bc, which
-Requires:  rsync, samba-client, tar, (mariadb|mysql), postgresql, openldap-clients, wget, mtx, mt-st
+Requires:  rsync, samba-client, tar, (mariadb or mysql), postgresql, openldap-clients, wget, mtx, mt-st
 Requires:  /usr/bin/cdrecord, /usr/bin/mkisofs
 BuildRequires: automake, autoconf
 

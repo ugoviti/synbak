@@ -1,3 +1,5 @@
+BUILD
+rpmbuild
 release
 *.tar.gz
 make-release.sh
