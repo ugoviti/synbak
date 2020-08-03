@@ -20,7 +20,16 @@ steps:
   commands:
   - ./autogen.sh
   - ./configure
-  - make
-- name: rpmbuild
-  image: rpmbuild:el7
-  spec: synbak.spec
+  - make release
+
+- name: deploy
+  image: appleboy/drone-scp
+  settings:
+    host: web01
+    port: 22
+    username:
+      from_secret: USERNAME
+    password:
+      from_secret: PASSWORD
+    source: release/synbak-${APP_VER}-1.noarch.rpm
+    target: /var/www/virtual/repo.initzero.it/centos/8/RPMS/noarch

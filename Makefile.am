@@ -70,6 +70,8 @@ EXTRA_DIST = config.rpath  config.rpath config.rpath config.rpath config.rpath c
 		BUGS		\
 		FAQ		\
 		README.fedora	\
+		README.md	\
+		CHANGELOG.md	\
 		$(template_DATA)
 
 DISTCLEANFILES = 
