@@ -7,7 +7,7 @@ ACLOCAL_AMFLAGS = -I m4
 SUBDIRS = m4 src po
 
 docdir = $(datadir)/doc/@PACKAGE@-@VERSION@
-doc_DATA = AUTHORS ChangeLog COPYING INSTALL NEWS README THANKS TODO BUGS FAQ README.fedora
+doc_DATA = AUTHORS CHANGELOG.md COPYING INSTALL NEWS README.md THANKS TODO BUGS FAQ README.fedora
 
 #exampledir = $(datadir)/doc/@PACKAGE@-@VERSION@/examples
 #example_DATA = example.conf

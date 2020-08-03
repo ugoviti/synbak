@@ -1,0 +1,31 @@
+kind: pipeline
+name: synbak
+
+environment:
+  APP_VER: 3.8.0
+
+trigger:
+  event:
+  - push
+  branch:
+  - master
+
+platform:
+  os: linux
+  arch: noarch
+
+volumes:
+  - name: docker
+    host:
+      path: /var/cache/drone/${DRONE_REPO}/${DRONE_STAGE_NAME}
+
+steps:
+- name: build
+  image: gcc
+  commands:
+  - ./autogen.sh
+  - ./configure
+  - make
+- name: rpmbuild
+  image: rpmbuild:el7
+  spec: synbak.spec
