@@ -14,8 +14,8 @@ Requires:  /usr/bin/rsync
 Requires:  /usr/bin/smbclient
 Requires:  /usr/bin/tar
 Requires:  /usr/bin/wget
-Requires:  /usr/bin/mtx
-Requires:  /usr/bin/mt-st
+Requires:  /usr/sbin/mtx
+Requires:  /usr/bin/mt
 Requires:  /usr/bin/mysqldump
 Requires:  /usr/bin/pg_dump
 Requires:  /usr/bin/ldapsearch
