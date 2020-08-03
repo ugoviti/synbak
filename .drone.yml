@@ -16,7 +16,7 @@ platform:
 
 steps:
 - name: build
-  image: gcc
+  image: centos/devtoolset-7-toolchain-centos7
   commands:
   - ./autogen.sh
   - ./configure
