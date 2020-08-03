@@ -33,4 +33,19 @@ steps:
       from_secret: PASSWORD
     strip_components: 1
     source: release/synbak-*.noarch.rpm
-    target: /var/www/virtual/repo.initzero.it/centos/8/RPMS/noarch
+    target:
+    - /var/www/virtual/repo.initzero.it/centos/7/RPMS/noarch
+    - /var/www/virtual/repo.initzero.it/centos/8/RPMS/noarch
+
+- name: updaterepo
+  image: appleboy/drone-ssh
+  settings:
+    host: web01
+    port: 22
+    username:
+      from_secret: USERNAME
+    password:
+      from_secret: PASSWORD
+    script:
+    - /var/www/virtual/repo.initzero.it/centos/7/updaterepo.sh
+    - /var/www/virtual/repo.initzero.it/centos/8/updaterepo.sh
