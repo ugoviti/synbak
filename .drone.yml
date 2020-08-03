@@ -4,8 +4,6 @@ name: synbak
 trigger:
   event:
   - tag
-  branch:
-  - master
 
 platform:
   os: linux
