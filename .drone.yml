@@ -1,12 +1,9 @@
 kind: pipeline
 name: synbak
 
-environment:
-  APP_VER: 3.8.0
-
 trigger:
   event:
-  - push
+  - tag
   branch:
   - master
 
