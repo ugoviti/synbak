@@ -12,7 +12,7 @@ trigger:
 
 platform:
   os: linux
-  arch: noarch
+  arch: amd64
 
 steps:
 - name: build
