@@ -23,7 +23,7 @@ steps:
   - make release
 
 - name: deploy
-  image: appleboy/drone-scp
+  image: appleboy/drone-scp:1
   settings:
     host: web01
     port: 22
