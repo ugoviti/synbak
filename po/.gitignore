@@ -1,5 +1,2 @@
 *.sed
 stamp-po
-/it.po
-/pl.po
-/synbak.pot
