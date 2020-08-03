@@ -31,5 +31,6 @@ steps:
       from_secret: USERNAME
     password:
       from_secret: PASSWORD
-    source: release/synbak-*.rpm
+    strip_components: 1
+    source: release/synbak-*.noarch.rpm
     target: /var/www/virtual/repo.initzero.it/centos/8/RPMS/noarch
