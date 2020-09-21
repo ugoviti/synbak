@@ -1409,8 +1409,10 @@ check_status_host() {
   # args desc: 'host' 'port'
   #    return: return code 0 = reachable, 1 = unreachable
   host_check_netbios() {
-        local check1="$(smbclient -N -L "$1" >/dev/null 2>&1 ; echo $?)"
-        local check2="$(smbclient -d 0 //${host}/${path} $([ -n "${username}" ] && echo "-U ${username}")$([ -n "${password}" ] && echo "%${password}" || echo " -N") -c quit >/dev/null 2>&1 ; echo $?)"
+        local t_username="$([ -n "${username}" ] && echo "-U ${username}")"
+        local t_password="$([ -n "${password}" ] && echo "%${password}" || echo " -N")"
+        local check1="$(eval smbclient -N -L "$1" >/dev/null 2>&1 ; echo $?)"
+        local check2="$(eval smbclient -d 0 //${host}/${path} ${t_username}${t_password} -c quit >/dev/null 2>&1 ; echo $?)"
         #echo check1 = $check1
         #echo check2 = $check2
         if [[ "${check1}" = 0 || "${check2}" = 0 ]]
@@ -1494,11 +1496,11 @@ mount_host(){
  fi
 
  mount_cifs(){
-   mount.cifs //"${backup_source_uri_host}"/"${backup_source_uri_path}" "${dir_mnt}" -o ro$([ -n "${backup_source_uri_username}" ] && echo ",username=$backup_source_uri_username")$([ -n "${backup_source_uri_password}" ] && echo ",password=$backup_source_uri_password" || echo ",guest")
+   eval mount.cifs "//${backup_source_uri_host}/${backup_source_uri_path}" "${dir_mnt}" -o ro$([ -n "${backup_source_uri_username}" ] && echo ",username=$backup_source_uri_username")$([ -n "${backup_source_uri_password}" ] && echo ",password=$backup_source_uri_password" || echo ",guest")
  }
 
  mount_smb(){
-   smbmount //"${backup_source_uri_host}"/"${backup_source_uri_path}" "${dir_mnt}" -o ro$([ -n "${backup_source_uri_username}" ] && echo ",username=$backup_source_uri_username")$([ -n "${backup_source_uri_password}" ] && echo ",password=$backup_source_uri_password" || echo ",guest"),debug=0 | grep -v ^"opts:"
+   eval smbmount "//${backup_source_uri_host}/${backup_source_uri_path}" "${dir_mnt}" -o ro$([ -n "${backup_source_uri_username}" ] && echo ",username=$backup_source_uri_username")$([ -n "${backup_source_uri_password}" ] && echo ",password=$backup_source_uri_password" || echo ",guest"),debug=0 | grep -v ^"opts:"
  }
 
  case "${backup_source_uri_protocol}" in
