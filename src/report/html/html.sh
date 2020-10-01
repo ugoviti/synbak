@@ -487,6 +487,9 @@ echo "<?xml version=\"1.0\" encoding=\"utf-8\"?>
 
 	echo "<item>
   <title>B:[$(show_time_human $(read_file ${dir}/$(basename ${file_time_begin})))] S:[$(read_file ${dir}/$(basename ${file_system}))] M:[$(read_file ${dir}/$(basename ${file_method}))] R:[${status_backup}]</title>
+  <system>$(read_file ${dir}/$(basename ${file_system}))</system>
+  <method>$(read_file ${dir}/$(basename ${file_method}))</method>
+  <status>${status_backup}</status>
   <link>${report_html_uri}/${year}/${month}/${day}/${rdir}/${report_html_file_index}</link>
   <author>${report_info_support}</author>
   <description>
@@ -555,6 +558,10 @@ echo "<?xml version=\"1.0\" encoding=\"utf-8\"?>
 
 	echo "<item>
   <title>${title}</title>
+  <status>${status_backup}</status>
+  <tot>${tot_backups}</tot>
+  <oks>${tot_ok}</oks>
+  <errors>${tot_error}</errors>
   <link>${link}</link>
   <pubDate>$(show_time_human $(read_file ${dir}/$(basename ${file_time_begin})) rss)</pubDate>
   <description>${description}</description>
