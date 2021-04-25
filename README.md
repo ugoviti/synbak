@@ -120,21 +120,21 @@ Please read the FAQ file to discover many useful tips.
 * receive via email the backup reports, the subject will describe if your backup gone well or not 
 
 ## Requirements
-See INSTALL file for further information
+See [INSTALL](INSTALL) file for further information
 
 ## Installation
-See INSTALL file for further information
+See [INSTALL](INSTALL) file for further information
 
 ## Release Notes
-See ChangeLog file for further information
+See [CHANGELOG](CHANGELOG.md) file for further information
 
 ## Future
-See TODO file for further information
+See [TODO](TODO) file for further information
 
 ## License
-See COPYING file for further information
+See [COPYING](COPYING) file for further information
 
-============
+============  
 Please report bugs and tell me what you like/dislike to <opensource@initzero.it>
 
 Thanks for downloading and using synbak.
