@@ -113,10 +113,15 @@ method_backup() {
    make_backup_step > ${file_log_errors_step} 2>&1
    save_time_end_step
    check_status_backup_step
+   status_backup_step="$?"
    report_text separator_info3
  }
 
  method_erase() {
+   # workaround for deleting good backups after a failed step (mysql method erase backups during every step, not at the end)
+   check_status_backup 2>&1 > /dev/null ; local status_backup_global="$?"
+   [ "$status_backup_step" = "0" ] && save_status_backup_ok
+   
    # auto erasing old backups
    save_time_begin_step
    backup_erase_init "${backup_name_prefix}-${system}-${backup_source_step}-[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]-"
@@ -125,6 +130,9 @@ method_backup() {
    save_time_end_step
    check_status_step
    report_text separator_info3
+   
+   # workaround restore global backup status
+   [ "$status_backup_global" = "1" ] && save_status_backup_error
  }
 
 

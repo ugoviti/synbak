@@ -1,9 +1,9 @@
 # process this file with autoconf to produce a configure script.
 
-AC_INIT([synbak], [3.8.1], [opensource@initzero.it])
+AC_INIT([synbak], [3.8.2], [opensource@initzero.it])
 AC_CONFIG_SRCDIR([src])
 AM_INIT_AUTOMAKE
-VERSION_DATE="20201001"
+VERSION_DATE="20210701"
 RELEASE="1"
 
 AC_SUBST(VERSION_DATE)
