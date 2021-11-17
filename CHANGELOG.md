@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.8.3] - 2021-11-17
+### Fixed
+- fixed current USER detection in check_cuncurrent_limit function
+
 ## [3.8.2] - 2021-07-01
 ### Fixed
 - mysql method erase of old dumps: after a error during backup step, subsequent good database dumps will be removed also

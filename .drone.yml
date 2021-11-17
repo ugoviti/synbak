@@ -16,6 +16,7 @@ steps:
   - ./autogen.sh
   - ./configure
   - make release
+  - cd release && alien synbak-*.noarch.rpm
 
 - name: deploy
   image: appleboy/drone-scp:1
