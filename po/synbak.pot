@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: synbak 3.8.2\n"
+"Project-Id-Version: synbak 3.8.3\n"
 "Report-Msgid-Bugs-To: opensource@initzero.it\n"
-"POT-Creation-Date: 2021-07-24 00:15+0200\n"
+"POT-Creation-Date: 2021-11-17 19:10+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -397,27 +397,27 @@ msgstr ""
 msgid "Free space and active mount points: "
 msgstr ""
 
-#: src/functions.sh:955
+#: src/functions.sh:956
 msgid "backups"
 msgstr ""
 
-#: src/functions.sh:1644
+#: src/functions.sh:1645
 msgid "yearly"
 msgstr ""
 
-#: src/functions.sh:1652
+#: src/functions.sh:1653
 msgid "monthly"
 msgstr ""
 
-#: src/functions.sh:1660
+#: src/functions.sh:1661
 msgid "weekly"
 msgstr ""
 
-#: src/functions.sh:1668
+#: src/functions.sh:1669
 msgid "daily"
 msgstr ""
 
-#: src/functions.sh:1692
+#: src/functions.sh:1693
 msgid "single"
 msgstr ""
 
