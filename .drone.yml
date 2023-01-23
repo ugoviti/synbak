@@ -24,9 +24,9 @@ steps:
     host: web01
     port: 22
     username:
-      from_secret: USERNAME
+      from_secret: WEB01_SFTP_USERNAME
     password:
-      from_secret: PASSWORD
+      from_secret: WEB01_SFTP_PASSWORD
     strip_components: 1
     source: release/synbak-*.noarch.rpm
     target:
@@ -40,9 +40,9 @@ steps:
     host: web01
     port: 22
     username:
-      from_secret: USERNAME
+      from_secret: WEB01_SFTP_USERNAME
     password:
-      from_secret: PASSWORD
+      from_secret: WEB01_SFTP_PASSWORD
     script:
     - /var/www/virtual/repo.initzero.it/centos/7/updaterepo.sh
     - /var/www/virtual/repo.initzero.it/centos/8/updaterepo.sh
