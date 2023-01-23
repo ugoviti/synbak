@@ -476,7 +476,7 @@ parse_path(){
 
 check_cuncurrent_limit() {
   # stop running this backup set if the method_concurrent_limit is greater or equal to running backup
-  USER="$(whoami)"
+  : ${USER:="$(whoami)"}
   if [ $(ps -u $USER u | grep -v grep | grep "${synbak_package}-${system}-${method}" | wc -l) -gt ${method_concurrent_limit} ]
 	then
 	  report_text cuncurrent_limit

@@ -32,6 +32,7 @@ steps:
     target:
     - /var/www/virtual/repo.initzero.it/centos/7/RPMS/noarch
     - /var/www/virtual/repo.initzero.it/centos/8/RPMS/noarch
+    - /var/www/virtual/repo.initzero.it/centos/9/RPMS/noarch
 
 - name: updaterepo
   image: appleboy/drone-ssh
@@ -45,3 +46,4 @@ steps:
     script:
     - /var/www/virtual/repo.initzero.it/centos/7/updaterepo.sh
     - /var/www/virtual/repo.initzero.it/centos/8/updaterepo.sh
+    - /var/www/virtual/repo.initzero.it/centos/9/updaterepo.sh
