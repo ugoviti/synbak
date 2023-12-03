@@ -106,3 +106,4 @@ src/report/html/images/Makefile.in
 src/report/html/js/Makefile
 src/report/html/js/Makefile.in
 synbak.spec
+*~
