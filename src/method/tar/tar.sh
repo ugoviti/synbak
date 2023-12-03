@@ -106,7 +106,7 @@ save_time_begin_step
 
 # Workaround to parse only english text output
 ORIG_LANG=$LANG
-LANG=en
+LANG=C
 
 
 if ! check_writable "${backup_destination}" 2>/dev/null

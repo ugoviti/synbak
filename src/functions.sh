@@ -826,7 +826,7 @@ show_time_human(){
 	hour)	date --date="1970-01-01 00:00:00 UTC ${time_unix} seconds" +"%H" ;;
 	minute)	date --date="1970-01-01 00:00:00 UTC ${time_unix} seconds" +"%M" ;;
 	second)	date --date="1970-01-01 00:00:00 UTC ${time_unix} seconds" +"%S" ;;
-	rss)	LANG_ORIG=$LANG ; LANG=en ; date --date="1970-01-01 00:00:00 UTC ${time_unix} seconds" +"%a, %e %b %Y %H:%M:%S %Z" -u ; LANG=$LANG_ORIG ;;
+	rss)	LANG_ORIG=$LANG ; LANG=C ; date --date="1970-01-01 00:00:00 UTC ${time_unix} seconds" +"%a, %e %b %Y %H:%M:%S %Z" -u ; LANG=$LANG_ORIG ;;
 	*|time)	date --date="1970-01-01 00:00:00 UTC ${time_unix} seconds" +"%H:%M:%S" ;;
  esac
 }

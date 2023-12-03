@@ -92,7 +92,7 @@ method_backup() {
  # connect to the pgsql server and generate a list of all databases and parse out the excluded databases
  generate_databases_list(){
    generate_databases_list_step() {
-     backup_source="$(LANG=en psql ${backup_method_opts_extra} -P format=Unaligned -tqc 'SELECT datname FROM pg_database;' | grep -vE 'template(0|1)' | sed 's/ /%/g' | grep -wvf ${file_list_exclude})"
+     backup_source="$(LANG=C psql ${backup_method_opts_extra} -P format=Unaligned -tqc 'SELECT datname FROM pg_database;' | grep -vE 'template(0|1)' | sed 's/ /%/g' | grep -wvf ${file_list_exclude})"
    }
    save_time_begin_step
    generate_databases_list_step 1>/dev/null 2>"${file_log_errors_step}"

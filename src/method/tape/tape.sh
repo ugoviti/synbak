@@ -100,7 +100,7 @@ method_backup() {
 
   # Workaround to parse only english text output
   ORIG_LANG=$LANG
-  LANG=en
+  LANG=C
 
   make_backup_step > ${file_log_errors_step} 2>&1
 

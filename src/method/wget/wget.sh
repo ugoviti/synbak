@@ -71,7 +71,7 @@ method_backup()
 {
  make_backup_step(){
    cd ${backup_destination_step}/
-   LANG=en eval ${backup_method_cmd} ${backup_method_opts_default} ${backup_source_step_original}
+   LANG=C eval ${backup_method_cmd} ${backup_method_opts_default} ${backup_source_step_original}
 
    save_size_destination "${backup_destination_step}"
    save_size_backup "${size_destination}"
